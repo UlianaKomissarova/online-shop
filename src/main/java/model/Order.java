@@ -9,7 +9,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Order {
-    private int id;
+    private Integer id;
     private int itemId;
     private int buyerId;
     private OrderStatus status;

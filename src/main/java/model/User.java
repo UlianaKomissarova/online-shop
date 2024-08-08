@@ -9,7 +9,7 @@ import java.util.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class User {
-    private int id;
+    private Integer id;
     private String name;
     private String email;
     private String phone;

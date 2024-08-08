@@ -7,7 +7,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Item {
-    private int id;
+    private Integer id;
     private String name;
     private String description;
     private boolean isAvailable;
