@@ -5,8 +5,8 @@ import exception.NotFoundException;
 
 import java.util.List;
 
-public interface ItemService {
-    ItemDto save(ItemDto dto) throws NotFoundException;
+public interface ItemServiceInterface {
+    void save(ItemDto dto) throws NotFoundException;
 
     void update(ItemDto item) throws NotFoundException;
 

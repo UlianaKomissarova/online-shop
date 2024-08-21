@@ -2,7 +2,7 @@ package dto;
 
 import lombok.*;
 
-import java.util.Date;
+import java.util.*;
 
 @Data
 @Builder
@@ -10,8 +10,9 @@ import java.util.Date;
 @NoArgsConstructor
 public class OrderDto {
     private int id;
-    private int itemId;
     private int buyerId;
     private String status;
     private Date createdAt;
+    private List<Integer> itemsIds;
+    private Integer deliveryId;
 }

@@ -4,10 +4,11 @@ import dto.ItemDto;
 import model.Item;
 
 public class ItemMapper {
-    public static Item toItemFromItemDto(ItemDto dto) {
+    public static Item toItemFromDto(ItemDto dto) {
         return Item.builder()
             .id(dto.getId())
-            .vendorId(dto.getVendorId())
+            .price(dto.getPrice())
+            .quantity(dto.getQuantity())
             .name(dto.getName())
             .description(dto.getDescription())
             .isAvailable(dto.isAvailable())
@@ -20,7 +21,9 @@ public class ItemMapper {
             .id(item.getId())
             .isAvailable(item.isAvailable())
             .name(item.getName())
-            .vendorId(item.getVendorId())
+            .vendorId(item.getVendor().getId())
+            .price(item.getPrice())
+            .quantity(item.getQuantity())
             .build();
     }
 }

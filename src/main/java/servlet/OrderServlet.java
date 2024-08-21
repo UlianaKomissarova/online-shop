@@ -1,9 +1,8 @@
 package servlet;
 
 import dto.OrderDto;
-import exception.NotFoundException;
-import service.OrderService;
-import service.impl.OrderServiceImpl;
+import service.OrderServiceInterface;
+import service.impl.OrderService;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
@@ -12,10 +11,10 @@ import java.util.*;
 
 @WebServlet(urlPatterns = {"/orders/*"})
 public class OrderServlet extends AbstractServlet {
-    private final OrderService orderService;
+    private final OrderServiceInterface service;
 
     public OrderServlet() {
-        orderService = OrderServiceImpl.getInstance();
+        service = OrderService.getInstance();
     }
 
     @Override
@@ -28,18 +27,15 @@ public class OrderServlet extends AbstractServlet {
             String[] pathPart = getPathParts(req);
 
             if ("all".equals(pathPart[1])) {
-                List<OrderDto> dtos = orderService.findAll();
+                List<OrderDto> dtos = service.findAll();
                 resp.setStatus(HttpServletResponse.SC_OK);
                 responseAnswer = objectMapper.writeValueAsString(dtos);
             } else {
                 Integer orderId = Integer.parseInt(pathPart[1]);
-                OrderDto dto = orderService.findById(orderId);
+                OrderDto dto = service.findById(orderId);
                 resp.setStatus(HttpServletResponse.SC_OK);
                 responseAnswer = objectMapper.writeValueAsString(dto);
             }
-        } catch (NotFoundException exception) {
-            resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
-            responseAnswer = exception.getMessage();
         } catch (Exception e) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             responseAnswer = e.getMessage();
@@ -56,7 +52,7 @@ public class OrderServlet extends AbstractServlet {
             String[] pathPart = req.getPathInfo().split("/");
             Integer orderId = Integer.parseInt(pathPart[1]);
             resp.setStatus(HttpServletResponse.SC_NO_CONTENT);
-            orderService.delete(orderId);
+            service.delete(orderId);
         } catch (Exception e) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             responseAnswer = e.getMessage();
@@ -70,20 +66,17 @@ public class OrderServlet extends AbstractServlet {
         setJsonHeader(resp);
         String json = getJson(req);
 
-        String responseAnswer;
         Optional<OrderDto> orderResponse;
         try {
             orderResponse = Optional.ofNullable(objectMapper.readValue(json, OrderDto.class));
-            OrderDto order = orderResponse.orElseThrow(IllegalArgumentException::new);
-
-            responseAnswer = objectMapper.writeValueAsString(orderService.save(order));
-            resp.setStatus(HttpServletResponse.SC_OK);
+            OrderDto dto = orderResponse.orElseThrow(IllegalArgumentException::new);
+            service.save(dto);
         } catch (Exception e) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            responseAnswer = e.getMessage();
+            writeResponse(resp, e.getMessage());
         }
 
-        writeResponse(resp, responseAnswer);
+        resp.sendRedirect("orders/all");
     }
 
     @Override
@@ -95,8 +88,8 @@ public class OrderServlet extends AbstractServlet {
         Optional<OrderDto> orderResponse;
         try {
             orderResponse = Optional.ofNullable(objectMapper.readValue(json, OrderDto.class));
-            OrderDto orderUpdateDto = orderResponse.orElseThrow(IllegalArgumentException::new);
-            orderService.update(orderUpdateDto);
+            OrderDto dto = orderResponse.orElseThrow(IllegalArgumentException::new);
+            service.update(dto);
         } catch (Exception e) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             responseAnswer = e.getMessage();
