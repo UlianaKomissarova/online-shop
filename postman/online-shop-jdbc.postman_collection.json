@@ -253,7 +253,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\"name\": \"Елка новогодняя\", \n\"description\": \"Все для праздника\", \n\"available\": true, \n\"vendorId\": 3\n}"
+							"raw": "{\n\"name\": \"Елка новогодняя\", \n\"description\": \"Все для праздника\", \n\"price\": 1500,\n\"quantity\": 2,\n\"available\": true, \n\"vendorId\": 3\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/items",
@@ -282,7 +282,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\"name\": \"Зонт\", \n\"description\": \"Зонт-трость прозрачный\", \n\"available\": true, \n\"vendorId\": 3\n}"
+							"raw": "{\n\"name\": \"Зонт\", \n\"description\": \"Зонт-трость прозрачный\", \n\"price\": 900,\n\"quantity\": 1,\n\"available\": true, \n\"vendorId\": 3\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/items",
@@ -311,7 +311,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\"name\": \"Игра настольная\", \n\"description\": \"Интеллектуальная игра для компании\", \n\"available\": true, \n\"vendorId\": 3\n}"
+							"raw": "{\n\"name\": \"Игра настольная\", \n\"description\": \"Интеллектуальная игра для компании\", \n\"price\": 4000,\n\"quantity\": 5,\n\"available\": true, \n\"vendorId\": 3\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/items",
@@ -392,7 +392,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\"id\": 1,\n\"name\": \"Сосна обновленная\", \n\"description\": \"Все для праздника\", \n\"available\": false, \n\"vendorId\": 3\n}"
+							"raw": "{\n\"id\": 4,\n\"name\": \"Сосна обновленная\", \n\"description\": \"Все для праздника\", \n\"price\": 1500,\n\"quantity\": 3,\n\"available\": false, \n\"vendorId\": 3\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/items",
@@ -409,7 +409,7 @@
 					"response": []
 				},
 				{
-					"name": "delete item 2",
+					"name": "delete item 1",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -420,7 +420,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/items/2",
+							"raw": "http://localhost:8080/items/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -428,7 +428,7 @@
 							"port": "8080",
 							"path": [
 								"items",
-								"2"
+								"1"
 							]
 						}
 					},
@@ -466,7 +466,7 @@
 			"name": "orders",
 			"item": [
 				{
-					"name": "add order 1 failed",
+					"name": "add order 1",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -478,7 +478,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\"itemId\": 1, \n\"buyerId\": 1, \n\"status\": \"IN_PROCESS\", \n\"createdAt\": \"2024-12-12\"\n}"
+							"raw": "{\n\"buyerId\": 1, \n\"status\": \"IN_PROCESS\", \n\"createdAt\": \"2024-12-12\",\n\"itemsIds\": [3]\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/orders",
@@ -495,7 +495,7 @@
 					"response": []
 				},
 				{
-					"name": "add order success",
+					"name": "add order 2",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -507,7 +507,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\"itemId\": 3, \n\"buyerId\": 1, \n\"status\": \"DENIED\", \n\"createdAt\": \"2024-03-12\"\n}"
+							"raw": "{\n\"buyerId\": 1, \n\"status\": \"IN_PROCESS\", \n\"createdAt\": \"2024-12-12\",\n\"itemsIds\": [2]\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/orders",
@@ -588,7 +588,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\"id\": 1,\n\"itemId\": 3, \n\"buyerId\": 1, \n\"status\": \"IN_PROCESS\", \n\"createdAt\": \"2024-12-12\"\n}"
+							"raw": "{\n\"id\": 1,\n\"buyerId\": 1, \n\"status\": \"DENIED\", \n\"createdAt\": \"2024-12-12\",\n\"itemsIds\": [6]\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/orders",
@@ -605,7 +605,7 @@
 					"response": []
 				},
 				{
-					"name": "delete order 2",
+					"name": "delete order 1",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -650,6 +650,185 @@
 							"port": "8080",
 							"path": [
 								"orders",
+								"all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "deliveries",
+			"item": [
+				{
+					"name": "add delivery",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"address\": \"Minsk Himikov Street\", \n\"price\": 1000, \n\"date\": \"2024-08-05\",\n\"orderId\": 2,\n\"deliverFrom\": \"11:00\",\n\"deliverTo\": \"23:00\",\n\"courierPhone\": \"89203177600\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/deliveries?type=courier",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"deliveries"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "courier"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get delivery",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/deliveries/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"deliveries",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all deliveries",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/deliveries/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"deliveries",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update delivery",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"id\": 1,\n\"address\": \"Karaganda, Himikov Street\", \n\"price\": 1500, \n\"date\": \"2024-08-06\",\n\"orderId\": 2,\n\"deliverFrom\": \"11:00\",\n\"deliverTo\": \"23:00\",\n\"courierPhone\": \"89203177600\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/deliveries?type=courier",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"deliveries"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "courier"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete delivery",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/deliveries/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"deliveries",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all deliveries after delete",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/deliveries/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"deliveries",
 								"all"
 							]
 						}

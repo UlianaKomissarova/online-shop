@@ -1,9 +1,8 @@
 package servlet;
 
 import dto.UserDto;
-import exception.NotFoundException;
-import service.UserService;
-import service.impl.UserServiceImpl;
+import service.UserServiceInterface;
+import service.impl.UserService;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
@@ -12,10 +11,10 @@ import java.util.*;
 
 @WebServlet(urlPatterns = {"/users/*"})
 public class UserServlet extends AbstractServlet {
-    private final UserService userService;
+    private final UserServiceInterface service;
 
     public UserServlet() {
-        userService = UserServiceImpl.getInstance();
+        service = UserService.getInstance();
     }
 
     @Override
@@ -28,18 +27,15 @@ public class UserServlet extends AbstractServlet {
             String[] pathPart = getPathParts(req);
 
             if ("all".equals(pathPart[1])) {
-                List<UserDto> dtos = userService.findAll();
+                List<UserDto> dtos = service.findAll();
                 resp.setStatus(HttpServletResponse.SC_OK);
                 responseAnswer = objectMapper.writeValueAsString(dtos);
             } else {
                 Integer userId = Integer.parseInt(pathPart[1]);
-                UserDto dto = userService.findById(userId);
+                UserDto dto = service.findById(userId);
                 resp.setStatus(HttpServletResponse.SC_OK);
                 responseAnswer = objectMapper.writeValueAsString(dto);
             }
-        } catch (NotFoundException exception) {
-            resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
-            responseAnswer = exception.getMessage();
         } catch (Exception e) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             responseAnswer = e.getMessage();
@@ -56,7 +52,7 @@ public class UserServlet extends AbstractServlet {
             String[] pathPart = req.getPathInfo().split("/");
             Integer userId = Integer.parseInt(pathPart[1]);
             resp.setStatus(HttpServletResponse.SC_NO_CONTENT);
-            userService.delete(userId);
+            service.delete(userId);
         } catch (Exception e) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             responseAnswer = e.getMessage();
@@ -70,18 +66,17 @@ public class UserServlet extends AbstractServlet {
         setJsonHeader(resp);
         String json = getJson(req);
 
-        String responseAnswer;
         Optional<UserDto> userResponse;
         try {
             userResponse = Optional.ofNullable(objectMapper.readValue(json, UserDto.class));
-            UserDto user = userResponse.orElseThrow(IllegalArgumentException::new);
-            responseAnswer = objectMapper.writeValueAsString(userService.save(user));
+            UserDto dto = userResponse.orElseThrow(IllegalArgumentException::new);
+            service.save(dto);
         } catch (Exception e) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            responseAnswer = e.getMessage();
+            writeResponse(resp, e.getMessage());
         }
 
-        writeResponse(resp, responseAnswer);
+        resp.sendRedirect("users/all");
     }
 
     @Override
@@ -93,8 +88,8 @@ public class UserServlet extends AbstractServlet {
         Optional<UserDto> userResponse;
         try {
             userResponse = Optional.ofNullable(objectMapper.readValue(json, UserDto.class));
-            UserDto userUpdateDto = userResponse.orElseThrow(IllegalArgumentException::new);
-            userService.update(userUpdateDto);
+            UserDto user = userResponse.orElseThrow(IllegalArgumentException::new);
+            service.update(user);
         } catch (Exception e) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             responseAnswer = e.getMessage();

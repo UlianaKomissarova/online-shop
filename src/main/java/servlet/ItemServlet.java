@@ -1,9 +1,8 @@
 package servlet;
 
 import dto.ItemDto;
-import exception.NotFoundException;
-import service.ItemService;
-import service.impl.ItemServiceImpl;
+import service.ItemServiceInterface;
+import service.impl.ItemService;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
@@ -12,10 +11,10 @@ import java.util.*;
 
 @WebServlet(urlPatterns = {"/items/*"})
 public class ItemServlet extends AbstractServlet {
-    private final ItemService itemService;
+    private final ItemServiceInterface service;
 
     public ItemServlet() {
-        itemService = ItemServiceImpl.getInstance();
+        service = ItemService.getInstance();
     }
 
     @Override
@@ -28,18 +27,15 @@ public class ItemServlet extends AbstractServlet {
             String[] pathPart = getPathParts(req);
 
             if ("all".equals(pathPart[1])) {
-                List<ItemDto> dtos = itemService.findAll();
+                List<ItemDto> dtos = service.findAll();
                 resp.setStatus(HttpServletResponse.SC_OK);
                 responseAnswer = objectMapper.writeValueAsString(dtos);
             } else {
                 Integer itemId = Integer.parseInt(pathPart[1]);
-                ItemDto dto = itemService.findById(itemId);
+                ItemDto dto = service.findById(itemId);
                 resp.setStatus(HttpServletResponse.SC_OK);
                 responseAnswer = objectMapper.writeValueAsString(dto);
             }
-        } catch (NotFoundException exception) {
-            resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
-            responseAnswer = exception.getMessage();
         } catch (Exception e) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             responseAnswer = e.getMessage();
@@ -56,7 +52,7 @@ public class ItemServlet extends AbstractServlet {
             String[] pathPart = req.getPathInfo().split("/");
             Integer itemId = Integer.parseInt(pathPart[1]);
             resp.setStatus(HttpServletResponse.SC_NO_CONTENT);
-            itemService.delete(itemId);
+            service.delete(itemId);
         } catch (Exception e) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             responseAnswer = e.getMessage();
@@ -70,18 +66,16 @@ public class ItemServlet extends AbstractServlet {
         setJsonHeader(resp);
         String json = getJson(req);
 
-        String responseAnswer;
         Optional<ItemDto> itemResponse;
         try {
             itemResponse = Optional.ofNullable(objectMapper.readValue(json, ItemDto.class));
-            ItemDto item = itemResponse.orElseThrow(IllegalArgumentException::new);
-            responseAnswer = objectMapper.writeValueAsString(itemService.save(item));
+            ItemDto dto = itemResponse.orElseThrow(IllegalArgumentException::new);
+            service.save(dto);
         } catch (Exception e) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            responseAnswer = e.getMessage();
         }
 
-        writeResponse(resp, responseAnswer);
+        resp.sendRedirect("items/all");
     }
 
     @Override
@@ -93,8 +87,8 @@ public class ItemServlet extends AbstractServlet {
         Optional<ItemDto> itemResponse;
         try {
             itemResponse = Optional.ofNullable(objectMapper.readValue(json, ItemDto.class));
-            ItemDto itemUpdateDto = itemResponse.orElseThrow(IllegalArgumentException::new);
-            itemService.update(itemUpdateDto);
+            ItemDto dto = itemResponse.orElseThrow(IllegalArgumentException::new);
+            service.update(dto);
         } catch (Exception e) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             responseAnswer = e.getMessage();

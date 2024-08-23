@@ -5,8 +5,8 @@ import exception.NotFoundException;
 
 import java.util.List;
 
-public interface OrderService {
-    OrderDto save(OrderDto dto) throws NotFoundException;
+public interface OrderServiceInterface {
+    void save(OrderDto dto) throws NotFoundException;
 
     void update(OrderDto order) throws NotFoundException;
 

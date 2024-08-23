@@ -1,6 +1,7 @@
 package servlet;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import javax.servlet.http.*;
 import java.io.*;
@@ -11,6 +12,7 @@ public abstract class AbstractServlet extends HttpServlet {
 
     public AbstractServlet() {
         objectMapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd"));
+        objectMapper.registerModule(new JavaTimeModule());
     }
 
     protected static void setJsonHeader(HttpServletResponse resp) {

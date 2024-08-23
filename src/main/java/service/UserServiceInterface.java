@@ -1,12 +1,12 @@
 package service;
 
-import dto.*;
+import dto.UserDto;
 import exception.NotFoundException;
 
 import java.util.List;
 
-public interface UserService {
-    UserDto save(UserDto dto) throws NotFoundException;
+public interface UserServiceInterface {
+    void save(UserDto dto) throws NotFoundException;
 
     void update(UserDto user) throws NotFoundException;
 
