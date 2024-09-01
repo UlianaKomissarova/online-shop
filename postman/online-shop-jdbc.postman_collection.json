@@ -24,14 +24,13 @@
 							"raw": "{\n\"name\": \"Алиса Анохина\", \n\"email\": \"alisa@mail.ru\", \n\"phone\": \"89203127866\", \n\"birthday\": \"1987-03-12\", \n\"vendor\": false\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8080/online-shop/users",
+							"raw": "http://localhost:8080/users",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"online-shop",
 								"users"
 							]
 						}
@@ -54,14 +53,13 @@
 							"raw": "{\n\"name\": \"Дарья Дорохова\", \n\"email\": \"daria@mail.ru\", \n\"phone\": \"89101189022\", \n\"birthday\": \"2015-07-30\", \n\"vendor\": true\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8080/online-shop/users",
+							"raw": "http://localhost:8080/users",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"online-shop",
 								"users"
 							]
 						}
@@ -84,14 +82,13 @@
 							"raw": "{\n\"name\": \"Борис Бунин\", \n\"email\": \"boris@mail.com\", \n\"phone\": \"89303036754\", \n\"birthday\": \"1999-05-13\", \n\"vendor\": true\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8080/online-shop/users",
+							"raw": "http://localhost:8080/users",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"online-shop",
 								"users"
 							]
 						}
@@ -110,14 +107,13 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/online-shop/users",
+							"raw": "http://localhost:8080/users",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"online-shop",
 								"users"
 							]
 						}
@@ -136,14 +132,13 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/online-shop/users/2",
+							"raw": "http://localhost:8080/users/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"online-shop",
 								"users",
 								"2"
 							],
@@ -174,14 +169,13 @@
 							"raw": "{\n\"name\": \"Алиса Updated\", \n\"email\": \"alisa@mail.ru\", \n\"phone\": \"89203127866\", \n\"birthday\": \"1987-03-12\", \n\"vendor\": false\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8080/online-shop/users/1",
+							"raw": "http://localhost:8080/users/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"online-shop",
 								"users",
 								"1"
 							]
@@ -201,14 +195,13 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/online-shop/users/2",
+							"raw": "http://localhost:8080/users/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"online-shop",
 								"users",
 								"2"
 							]
@@ -228,14 +221,13 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/online-shop/users",
+							"raw": "http://localhost:8080/users",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"online-shop",
 								"users"
 							]
 						}
@@ -263,14 +255,13 @@
 							"raw": "{\n\"name\": \"Елка новогодняя\", \n\"description\": \"Все для праздника\", \n\"price\": 1500,\n\"quantity\": 2,\n\"available\": true, \n\"vendorId\": 3\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8080/online-shop/items",
+							"raw": "http://localhost:8080/items",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"online-shop",
 								"items"
 							]
 						}
@@ -293,14 +284,13 @@
 							"raw": "{\n\"name\": \"Зонт\", \n\"description\": \"Зонт-трость прозрачный\", \n\"price\": 900,\n\"quantity\": 1,\n\"available\": true, \n\"vendorId\": 3\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8080/online-shop/items",
+							"raw": "http://localhost:8080/items",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"online-shop",
 								"items"
 							]
 						}
@@ -323,14 +313,13 @@
 							"raw": "{\n\"name\": \"Игра настольная\", \n\"description\": \"Интеллектуальная игра для компании\", \n\"price\": 4000,\n\"quantity\": 5,\n\"available\": true, \n\"vendorId\": 3\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8080/online-shop/items",
+							"raw": "http://localhost:8080/items",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"online-shop",
 								"items"
 							]
 						}
@@ -349,14 +338,13 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/online-shop/items",
+							"raw": "http://localhost:8080/items",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"online-shop",
 								"items"
 							]
 						}
@@ -375,14 +363,13 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/online-shop/items/2",
+							"raw": "http://localhost:8080/items/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"online-shop",
 								"items",
 								"2"
 							]
@@ -406,14 +393,13 @@
 							"raw": "{\n\"name\": \"Сосна обновленная\", \n\"description\": \"Все для праздника\", \n\"price\": 1500,\n\"quantity\": 3,\n\"available\": false, \n\"vendorId\": 3\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8080/online-shop/items/1",
+							"raw": "http://localhost:8080/items/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"online-shop",
 								"items",
 								"1"
 							]
@@ -433,14 +419,13 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/online-shop/items/1",
+							"raw": "http://localhost:8080/items/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"online-shop",
 								"items",
 								"1"
 							]
@@ -460,14 +445,13 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/online-shop/items",
+							"raw": "http://localhost:8080/items",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"online-shop",
 								"items"
 							]
 						}
@@ -495,14 +479,13 @@
 							"raw": "{\n\"buyerId\": 1, \n\"status\": \"IN_PROCESS\", \n\"createdAt\": \"2024-12-12\",\n\"itemsIds\": [3]\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8080/online-shop/orders",
+							"raw": "http://localhost:8080/orders",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"online-shop",
 								"orders"
 							]
 						}
@@ -525,14 +508,13 @@
 							"raw": "{\n\"buyerId\": 1, \n\"status\": \"IN_PROCESS\", \n\"createdAt\": \"2024-12-12\",\n\"itemsIds\": [2]\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8080/online-shop/orders",
+							"raw": "http://localhost:8080/orders",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"online-shop",
 								"orders"
 							]
 						}
@@ -551,14 +533,13 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/online-shop/orders",
+							"raw": "http://localhost:8080/orders",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"online-shop",
 								"orders"
 							]
 						}
@@ -577,14 +558,13 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/online-shop/orders/1",
+							"raw": "http://localhost:8080/orders/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"online-shop",
 								"orders",
 								"1"
 							]
@@ -608,14 +588,13 @@
 							"raw": "{\n\"buyerId\": 1, \n\"status\": \"DENIED\", \n\"createdAt\": \"2024-12-12\",\n\"itemsIds\": [3]\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8080/online-shop/orders/1",
+							"raw": "http://localhost:8080/orders/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"online-shop",
 								"orders",
 								"1"
 							]
@@ -635,14 +614,13 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/online-shop/orders/1",
+							"raw": "http://localhost:8080/orders/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"online-shop",
 								"orders",
 								"1"
 							]
@@ -662,14 +640,13 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/online-shop/orders",
+							"raw": "http://localhost:8080/orders",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"online-shop",
 								"orders"
 							]
 						}
@@ -697,14 +674,13 @@
 							"raw": "{\n\"type\": \"courier\",\n\"address\": \"Minsk Himikov Street\", \n\"price\": 1000, \n\"date\": \"2024-08-05\",\n\"orderId\": 2,\n\"deliverFrom\": \"11:00\",\n\"deliverTo\": \"23:00\",\n\"courierPhone\": \"89203177600\"\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8080/online-shop/deliveries",
+							"raw": "http://localhost:8080/deliveries",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"online-shop",
 								"deliveries"
 							]
 						}
@@ -723,14 +699,13 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/online-shop/deliveries/1",
+							"raw": "http://localhost:8080/deliveries/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"online-shop",
 								"deliveries",
 								"1"
 							]
@@ -750,14 +725,13 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/online-shop/deliveries?type=",
+							"raw": "http://localhost:8080/deliveries?type=",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"online-shop",
 								"deliveries"
 							],
 							"query": [
@@ -786,14 +760,13 @@
 							"raw": "{\n\"type\": \"courier\",\n\"address\": \"Karaganda, Himikov Street\", \n\"price\": 1500, \n\"date\": \"2024-08-06\",\n\"orderId\": 2,\n\"deliverFrom\": \"11:00\",\n\"deliverTo\": \"23:00\",\n\"courierPhone\": \"89203177600\"\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8080/online-shop/deliveries/1",
+							"raw": "http://localhost:8080/deliveries/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"online-shop",
 								"deliveries",
 								"1"
 							],
@@ -820,14 +793,13 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/online-shop/deliveries/1",
+							"raw": "http://localhost:8080/deliveries/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"online-shop",
 								"deliveries",
 								"1"
 							]
@@ -847,14 +819,13 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/online-shop/deliveries",
+							"raw": "http://localhost:8080/deliveries",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"online-shop",
 								"deliveries"
 							]
 						}
